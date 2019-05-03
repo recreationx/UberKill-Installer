@@ -2,7 +2,6 @@
 Imports System.IO.Compression
 Imports Ionic.Zip
 Imports ZipFile = Ionic.Zip.ZipFile
-
 Public Class Form1
 
     Public autostrSteamInstallPath As String = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Valve\Steam", "InstallPath", Nothing)
