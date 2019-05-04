@@ -36,9 +36,9 @@ Partial Class Form1
         '
         'installpath
         '
+        Me.installpath.Enabled = False
         Me.installpath.Location = New System.Drawing.Point(72, 12)
         Me.installpath.Name = "installpath"
-        Me.installpath.ReadOnly = True
         Me.installpath.Size = New System.Drawing.Size(284, 20)
         Me.installpath.TabIndex = 1
         '

@@ -45,13 +45,18 @@ Public Class Form1
 
     Private Sub Autopath_CheckedChanged(sender As Object, e As EventArgs) Handles autopath.CheckedChanged
         If autopath.Checked = False Then
+            installpath.Enabled = True
             FolderBrowserDialog1.Description = "Select Steam installation folder. Please ensure that correct folder is selected or else installation will fail."
             If (FolderBrowserDialog1.ShowDialog() = DialogResult.OK) Then
                 Dim result As String = FolderBrowserDialog1.SelectedPath
-                installpath.Text = result + "\steamapps\common\UberStrike\"
+                Dim manualpath As String = result + "\steamapps\common\UberStrike\"
+                installpath.Text = manualpath
+                log.AppendText(Environment.NewLine + Environment.NewLine + "Path is set to: " + manualpath)
             End If
         Else
+            installpath.Enabled = False
             installpath.Text = ubzpath
+            log.AppendText(Environment.NewLine + Environment.NewLine + "Path is set to: " + ubzpath)
         End If
     End Sub
 End Class
