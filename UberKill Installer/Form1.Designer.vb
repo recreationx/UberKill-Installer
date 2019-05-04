@@ -25,20 +25,24 @@ Partial Class Form1
         Me.installpath = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.install = New System.Windows.Forms.Button()
-        Me.selpath = New System.Windows.Forms.FolderBrowserDialog()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.log = New System.Windows.Forms.TextBox()
+        Me.restore = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'installpath
         '
-        Me.installpath.Location = New System.Drawing.Point(12, 23)
+        Me.installpath.Location = New System.Drawing.Point(72, 12)
         Me.installpath.Name = "installpath"
-        Me.installpath.Size = New System.Drawing.Size(360, 20)
+        Me.installpath.ReadOnly = True
+        Me.installpath.Size = New System.Drawing.Size(284, 20)
         Me.installpath.TabIndex = 1
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 7)
+        Me.Label1.Location = New System.Drawing.Point(3, 13)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(63, 13)
         Me.Label1.TabIndex = 2
@@ -46,22 +50,65 @@ Partial Class Form1
         '
         'install
         '
-        Me.install.Location = New System.Drawing.Point(12, 47)
+        Me.install.Location = New System.Drawing.Point(180, 64)
         Me.install.Name = "install"
-        Me.install.Size = New System.Drawing.Size(75, 23)
+        Me.install.Size = New System.Drawing.Size(176, 23)
         Me.install.TabIndex = 4
         Me.install.Text = "Install"
         Me.install.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(13, 41)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(52, 13)
+        Me.Label2.TabIndex = 5
+        Me.Label2.Text = "Patching:"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Enabled = False
+        Me.TextBox1.Location = New System.Drawing.Point(71, 38)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(284, 20)
+        Me.TextBox1.TabIndex = 6
+        Me.TextBox1.Text = "Assembly-CSharp.dll, Assembly-CSharp-firstpass.dll, UnityEngine.dll"
+        '
+        'log
+        '
+        Me.log.Location = New System.Drawing.Point(6, 93)
+        Me.log.Multiline = True
+        Me.log.Name = "log"
+        Me.log.ReadOnly = True
+        Me.log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.log.Size = New System.Drawing.Size(349, 84)
+        Me.log.TabIndex = 7
+        Me.log.Text = "UberKill Installer v0.1" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Press Install to install UberKill patch!"
+        '
+        'restore
+        '
+        Me.restore.Location = New System.Drawing.Point(6, 64)
+        Me.restore.Name = "restore"
+        Me.restore.Size = New System.Drawing.Size(168, 23)
+        Me.restore.TabIndex = 8
+        Me.restore.Text = "Restore"
+        Me.restore.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(381, 73)
+        Me.ClientSize = New System.Drawing.Size(359, 183)
+        Me.Controls.Add(Me.restore)
+        Me.Controls.Add(Me.log)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.install)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.installpath)
         Me.Name = "Form1"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "UberKill Installer"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -71,5 +118,8 @@ Partial Class Form1
     Friend WithEvents installpath As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents install As Button
-    Friend WithEvents selpath As FolderBrowserDialog
+    Friend WithEvents Label2 As Label
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents log As TextBox
+    Friend WithEvents restore As Button
 End Class
