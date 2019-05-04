@@ -11,6 +11,14 @@ Public Class Form1
 
         installpath.Text = ubzpath
 
+        Try
+            Dim readuberstrok As String
+            readuberstrok = My.Computer.FileSystem.ReadAllText(ubzpath + "\Uberstrike_Data\.uberstrok")
+            customHost.Text = readuberstrok
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 
     Private Sub Install_Click(sender As Object, e As EventArgs) Handles install.Click
@@ -32,9 +40,11 @@ Public Class Form1
             End Using
             Directory.Delete("C:\Temp", True)
             log.AppendText(Environment.NewLine + Environment.NewLine + "Installed UberKill successfully!")
+            MsgBox("UberKill is installed!")
 
         Catch ex As Exception
             log.AppendText(Environment.NewLine + Environment.NewLine + "UberKill installation failed. Please check if installation path is correct.") 'If unknown error
+            MsgBox("UberKill installation failed!")
         End Try
 
     End Sub
@@ -59,4 +69,33 @@ Public Class Form1
             log.AppendText(Environment.NewLine + Environment.NewLine + "Path is set to: " + ubzpath)
         End If
     End Sub
+
+    Private Sub SetCustomHost_Click(sender As Object, e As EventArgs) Handles setCustomHost.Click
+        Dim uberstrokpath As String = installpath.Text + "\Uberstrike_Data\.uberstrok\"
+        File.WriteAllText(uberstrokpath, customHost.Text & vbCrLf)
+    End Sub
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim proc = Process.GetProcessesByName("Uberstrike")
+        For i As Integer = 0 To proc.Count - 1
+            proc(i).CloseMainWindow()
+        Next i
+    End Sub
+
+#Region "Not Implemented"
+    Public Function Ping(ByVal server As String) As String
+        Dim ElapseTime As New Stopwatch
+        Try
+            If server.Contains("2.0") Then
+                Dim server1 As String = server.Replace("https", "").Replace("http", "").Replace("2.0", "").Replace("/", "")
+                ElapseTime.Start()
+                My.Computer.Network.Ping(server1)
+                ElapseTime.Stop()
+            Else
+                MsgBox("Not a valid Uberstrike server.")
+            End If
+        Catch ex As Exception
+        End Try
+        Return ElapseTime.Elapsed.TotalMilliseconds.ToString("N")
+    End Function
+#End Region
 End Class
