@@ -39,8 +39,19 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles restore.Click
+    Private Sub restore_Click(sender As Object, e As EventArgs) Handles restore.Click 'Send information on restoring files
         MsgBox("1. Navigate to Steam library" + vbNewLine + "2. Right click on Uberstrike and select Properties" + vbNewLine + "3. Select local files" + vbNewLine + "4. Select Verify Integrity of Game Files")
     End Sub
 
+    Private Sub Autopath_CheckedChanged(sender As Object, e As EventArgs) Handles autopath.CheckedChanged
+        If autopath.Checked = False Then
+            FolderBrowserDialog1.Description = "Select Steam installation folder. Please ensure that correct folder is selected or else installation will fail."
+            If (FolderBrowserDialog1.ShowDialog() = DialogResult.OK) Then
+                Dim result As String = FolderBrowserDialog1.SelectedPath
+                installpath.Text = result + "\steamapps\common\UberStrike\"
+            End If
+        Else
+            installpath.Text = ubzpath
+        End If
+    End Sub
 End Class

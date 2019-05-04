@@ -22,6 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.installpath = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.install = New System.Windows.Forms.Button()
@@ -29,6 +30,8 @@ Partial Class Form1
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.log = New System.Windows.Forms.TextBox()
         Me.restore = New System.Windows.Forms.Button()
+        Me.autopath = New System.Windows.Forms.CheckBox()
+        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.SuspendLayout()
         '
         'installpath
@@ -50,7 +53,7 @@ Partial Class Form1
         '
         'install
         '
-        Me.install.Location = New System.Drawing.Point(180, 64)
+        Me.install.Location = New System.Drawing.Point(180, 83)
         Me.install.Name = "install"
         Me.install.Size = New System.Drawing.Size(176, 23)
         Me.install.TabIndex = 4
@@ -77,7 +80,7 @@ Partial Class Form1
         '
         'log
         '
-        Me.log.Location = New System.Drawing.Point(6, 93)
+        Me.log.Location = New System.Drawing.Point(6, 112)
         Me.log.Multiline = True
         Me.log.Name = "log"
         Me.log.ReadOnly = True
@@ -88,18 +91,31 @@ Partial Class Form1
         '
         'restore
         '
-        Me.restore.Location = New System.Drawing.Point(6, 64)
+        Me.restore.Location = New System.Drawing.Point(6, 83)
         Me.restore.Name = "restore"
         Me.restore.Size = New System.Drawing.Size(168, 23)
         Me.restore.TabIndex = 8
         Me.restore.Text = "Restore"
         Me.restore.UseVisualStyleBackColor = True
         '
+        'autopath
+        '
+        Me.autopath.AutoSize = True
+        Me.autopath.Checked = True
+        Me.autopath.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.autopath.Location = New System.Drawing.Point(308, 64)
+        Me.autopath.Name = "autopath"
+        Me.autopath.Size = New System.Drawing.Size(48, 17)
+        Me.autopath.TabIndex = 9
+        Me.autopath.Text = "Auto"
+        Me.autopath.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(359, 183)
+        Me.ClientSize = New System.Drawing.Size(359, 199)
+        Me.Controls.Add(Me.autopath)
         Me.Controls.Add(Me.restore)
         Me.Controls.Add(Me.log)
         Me.Controls.Add(Me.TextBox1)
@@ -107,6 +123,8 @@ Partial Class Form1
         Me.Controls.Add(Me.install)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.installpath)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "UberKill Installer"
@@ -122,4 +140,6 @@ Partial Class Form1
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents log As TextBox
     Friend WithEvents restore As Button
+    Friend WithEvents autopath As CheckBox
+    Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
 End Class
