@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "UberKill Installer", "UberKill Installer\UberKill Installer.vbproj", "{FC8BB12D-B145-4549-819F-48AF123A987A}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "UberKill Patcher", "UberKill Patcher\UberKill Patcher.vbproj", "{FC8BB12D-B145-4549-819F-48AF123A987A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
