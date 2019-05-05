@@ -15,13 +15,12 @@ Public Class Form1
     End Sub
 
     Private Sub Install_Click(sender As Object, e As EventArgs) Handles install.Click
-
         Try
             Dim ubzinstallpath As String = installpath.Text
-            If Not Directory.Exists("C:\Temp") Then
-                Directory.CreateDirectory("C:\Temp")
+            If Not Directory.Exists(ubzpath + "\Temp\") Then
+                Directory.CreateDirectory(ubzpath + "\Temp\")
             End If
-            Dim dir_Temp As String = "C:\Temp\beta.zip"
+            Dim dir_Temp As String = ubzpath + "\Temp\beta.zip"
             Dim dir_installpath As String = ubzinstallpath & "\Uberstrike_Data"
             File.WriteAllBytes(dir_Temp, My.Resources.beta)
             Dim betazip As ZipEntry
@@ -31,12 +30,12 @@ Public Class Form1
                 Next
                 log.AppendText(Environment.NewLine + Environment.NewLine + "Patched the following: ""Assembly-CSharp.dll, Assembly - CSharp - firstpass.dll, UnityEngine.dll, .uberstrok"" ")
             End Using
-            Directory.Delete("C:\Temp", True)
+            Directory.Delete(ubzpath + "\Temp\", True)
             log.AppendText(Environment.NewLine + Environment.NewLine + "Installed UberKill successfully!")
             MsgBox("UberKill is installed!")
             UpdateHost()
         Catch ex As Exception
-            log.AppendText(Environment.NewLine + Environment.NewLine + "UberKill installation failed. Please check if installation path is correct.") 'If unknown error
+            log.AppendText(Environment.NewLine + Environment.NewLine + "UberKill installation failed. Please check that Steam directory is picked correctly.")
             MsgBox("UberKill installation failed!")
         End Try
 
