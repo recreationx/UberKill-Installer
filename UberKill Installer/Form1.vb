@@ -10,14 +10,7 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         installpath.Text = ubzpath
-
-        Try
-            Dim readuberstrok As String
-            readuberstrok = My.Computer.FileSystem.ReadAllText(ubzpath + "\Uberstrike_Data\.uberstrok")
-            customHost.Text = readuberstrok
-        Catch ex As Exception
-
-        End Try
+        UpdateHost()
 
     End Sub
 
@@ -41,7 +34,7 @@ Public Class Form1
             Directory.Delete("C:\Temp", True)
             log.AppendText(Environment.NewLine + Environment.NewLine + "Installed UberKill successfully!")
             MsgBox("UberKill is installed!")
-
+            UpdateHost()
         Catch ex As Exception
             log.AppendText(Environment.NewLine + Environment.NewLine + "UberKill installation failed. Please check if installation path is correct.") 'If unknown error
             MsgBox("UberKill installation failed!")
@@ -71,8 +64,14 @@ Public Class Form1
     End Sub
 
     Private Sub SetCustomHost_Click(sender As Object, e As EventArgs) Handles setCustomHost.Click
-        Dim uberstrokpath As String = installpath.Text + "\Uberstrike_Data\.uberstrok\"
-        File.WriteAllText(uberstrokpath, customHost.Text & vbCrLf)
+        Try
+            Dim uberstrokpath As String = ubzpath + "\Uberstrike_Data\.uberstrok"
+            File.Delete(uberstrokpath)
+            File.WriteAllText(uberstrokpath, customHost.Text & vbCrLf)
+        Catch ex As Exception
+            MsgBox(".uberstrok does not exist, please install first!")
+        End Try
+
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim proc = Process.GetProcessesByName("Uberstrike")
@@ -80,6 +79,17 @@ Public Class Form1
             proc(i).CloseMainWindow()
         Next i
     End Sub
+
+    Function UpdateHost()
+        Try
+            Dim readuberstrok As String
+            readuberstrok = My.Computer.FileSystem.ReadAllText(ubzpath + "\Uberstrike_Data\.uberstrok")
+            customHost.Text = readuberstrok
+            Return Nothing
+        Catch ex As Exception
+            Return Nothing
+        End Try
+    End Function
 
 #Region "Not Implemented"
     Public Function Ping(ByVal server As String) As String
@@ -97,5 +107,6 @@ Public Class Form1
         End Try
         Return ElapseTime.Elapsed.TotalMilliseconds.ToString("N")
     End Function
+
 #End Region
 End Class
