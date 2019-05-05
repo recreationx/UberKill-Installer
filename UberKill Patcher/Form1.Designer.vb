@@ -36,7 +36,7 @@ Partial Class Form1
         Me.installtab = New System.Windows.Forms.TabPage()
         Me.misctab = New System.Windows.Forms.TabPage()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.killproc = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.setCustomHost = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -154,7 +154,7 @@ Partial Class Form1
         'misctab
         '
         Me.misctab.Controls.Add(Me.Label5)
-        Me.misctab.Controls.Add(Me.Button1)
+        Me.misctab.Controls.Add(Me.killproc)
         Me.misctab.Controls.Add(Me.Label4)
         Me.misctab.Controls.Add(Me.setCustomHost)
         Me.misctab.Controls.Add(Me.Label3)
@@ -176,14 +176,14 @@ Partial Class Form1
         Me.Label5.TabIndex = 5
         Me.Label5.Text = "Others:"
         '
-        'Button1
+        'killproc
         '
-        Me.Button1.Location = New System.Drawing.Point(11, 86)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(108, 23)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Kill Uberstrike"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.killproc.Location = New System.Drawing.Point(11, 86)
+        Me.killproc.Name = "killproc"
+        Me.killproc.Size = New System.Drawing.Size(108, 23)
+        Me.killproc.TabIndex = 4
+        Me.killproc.Text = "Kill Uberstrike"
+        Me.killproc.UseVisualStyleBackColor = True
         '
         'Label4
         '
@@ -256,5 +256,5 @@ Partial Class Form1
     Friend WithEvents customHost As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents killproc As Button
 End Class

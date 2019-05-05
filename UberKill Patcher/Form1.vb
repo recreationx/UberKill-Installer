@@ -54,6 +54,9 @@ Public Class Form1
                 Dim manualpath As String = result + "\steamapps\common\UberStrike\"
                 installpath.Text = manualpath
                 log.AppendText(Environment.NewLine + Environment.NewLine + "Path is set to: " + manualpath)
+            Else
+                log.AppendText(Environment.NewLine + Environment.NewLine + "No path selected. Returning to Auto Mode.")
+                autopath.Checked = True
             End If
         Else
             installpath.Enabled = False
@@ -72,11 +75,19 @@ Public Class Form1
         End Try
 
     End Sub
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim proc = Process.GetProcessesByName("Uberstrike")
-        For i As Integer = 0 To proc.Count - 1
-            proc(i).CloseMainWindow()
-        Next i
+    Private Sub killproc_Click(sender As Object, e As EventArgs) Handles killproc.Click
+
+        Try
+            Dim proc = Process.GetProcessesByName("Uberstrike")
+            For i As Integer = 0 To proc.Count > 1
+                proc(i).CloseMainWindow()
+            Next i
+            log.AppendText(Environment.NewLine + Environment.NewLine + "Killed Uberstrike.")
+        Catch ex As Exception
+            MsgBox("Uberstrike is not running!")
+            log.AppendText(Environment.NewLine + Environment.NewLine + "Kill Uberstrike failed. Uberstrike is not running.")
+        End Try
+
     End Sub
 
     Function UpdateHost()
